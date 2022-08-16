@@ -3,7 +3,7 @@ from location_field.models.plain import PlainLocationField
 from mapbox_location_field.models import LocationField
 from clients.models import ClientsUsers
 
-
+# comment
 
 
 class ChoresPost(models.Model):                             #Job post
