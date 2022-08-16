@@ -5,12 +5,14 @@ from .forms import SingUpForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from clients.models import ClientsUsers
 
+
 def UserDashbordPage(request):
-    return render(request,"user_dashboard_page.html",{})
+    return render(request, "dashboard.html", {})
+
 
 class UserRegisterView(generic.CreateView):
     form_class = SingUpForm
-    template_name = 'login_and_register_form.html'
+    template_name = 'sign-up.html'
     success_url = reverse_lazy('housemaster')
 
 
@@ -21,3 +23,7 @@ class ShowAllWorkers(ListView):
 
     def get_queryset(self):
         return ClientsUsers.objects.filter(user_type=ClientsUsers.worker)
+
+#
+# def TailwindDashboardTemplate(request):
+#     return render(request, "index.html", {})
