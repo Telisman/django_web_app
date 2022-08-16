@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_messages',
     'tailwind',
     'theme',
+    'django_browser_reload',
 ]
 INTERNAL_IPS = ["127.0.0.1", ]
 TAILWIND_APP_NAME = 'theme'
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 AUTH_USER_MODEL = 'clients.ClientsUsers'
 
