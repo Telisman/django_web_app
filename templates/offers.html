@@ -1,0 +1,40 @@
+{% extends "user_dashboard_page.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/offers.css' %}">
+<div class="container">
+    <h1>Offers</h1>
+
+</div>
+{% for offers in offers %}
+
+<!--Section: News of the day-->
+<div class="container">
+<div class="row gx-5">
+  <div class="col-md-6 mb-4">
+    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+      <img src="https://mdbcdn.b-cdn.net/img/new/slides/080.webp" class="img-fluid" />
+      <a href="#!">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-md-6 mb-4">
+    <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">{{ offers.date_of_post }}</span>
+    <h4><strong>{{ offers.name }}</strong></h4>
+    <p>{{ offers.post_id }} id</p>
+    <p class="text-muted">
+      {{ offers.bio|safe|truncatewords:50 }}
+    </p>
+    <button type="button" class="btn btn-primary" ><a href="{% url 'ShowOffer' offers.pk %}">Read more</a></button>
+  </div>
+</div>
+
+</div>
+{% endfor %}
+
+{% endif %}
+{% endblock %}

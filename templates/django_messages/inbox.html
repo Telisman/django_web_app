@@ -1,0 +1,77 @@
+{% extends "user_dashboard_page.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/inbox.css' %}">
+
+{% load i18n %}
+{% if message_list %}
+
+  <section class="sidebar">
+    <div class="sidebar--inner">
+      <div class="is-settings--parent">
+      <div class="sidebar-menu">
+        <ul>
+          <li class="inboxItem isActive"><a href="#0">Inbox (<span class="numCount"></span>)</a></li>
+          <li class="sentItem"><a href="{% url 'messages_outbox' %}">Sent</a></li>
+          <li class="spamItem"><a href="#0">Spam</a></li>
+          <li class="trashItem"><a href="{% url 'messages_trash' %}">Trash</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+<section class="view">
+
+    <section class="emails is-component">
+      <div class="emails--inner">
+      <div>
+          <h1 class="email-type">Inbox</h1>
+          <!-- inbox email cards -->
+          {% for message in message_list %}
+          <div class="inbox">
+              <div class="email-card">
+                <div class="is-email--section has-img">
+                  <div class="sender-img" style="">
+                  </div>
+                </div>
+                <div class="is-email--section has-content">
+                  <div class="sender-inner--content">
+                    <p class="sender-name">From: {{ message.sender.username }}</p>
+                    <p class="email-sum">Subject: <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a></p>
+                    <p class="email-sum">Time: {{ message.sent_at|date:_("DATETIME_FORMAT") }}</p>
+<!--                    <p class="email-sum">Body: {{ message.body }}</p>-->
+                  </div>
+                </div>
+                <div class="email-action">
+
+                    <span><a href="{% url 'messages_delete' message.id %}"><img src="https://gmailapp.surge.sh/assets/images/trashcan.png" alt="" class="action-icon trash"></a></span>
+                     {% if message.recipient.pk == user.pk %}
+                    <span><a href="{% url 'messages_reply' message.id %}"> <img src="https://gmailapp.surge.sh/assets/images/reply.png" alt="" class="action-icon"></a></span>
+                    {% endif %}
+                </div>
+              </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <section class="full-email-view is-component">
+
+
+    </section>
+
+
+</section>
+
+{% endif %}
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "user_dashboard_page.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_offer.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% if user.is_authenticated %}
+{% if user.user_type  == user.owner %}
+
+
+<div class="container">
+    <header>MAKE NEW OFFER</header>
+    <form action="" method="POST" class="add_offer">
+        {% csrf_token %}
+        <input type="text" name="name" class="form-control" maxlength="50" required="" id="id_name" placeholder="POST NAME">
+        <textarea name="bio" cols="40" rows="10" class="form-control" required="" id="id_bio" placeholder="DESCRIPTION" ></textarea>
+        <select name="category" class="form-control" required="" id="id_category" placeholder="CATEGORY">
+              <option value="" selected="">---------</option>
+              <option value="1">Vodoinstalater\ka</option>
+              <option value="2">Eelektricar\ka</option>
+              <option value="3">Moler\ka</option>
+              <option value="4">Stolar\ka</option>
+              <option value="5">IT</option>
+              <option value="6">Zidar\ka</option>
+              <option value="7">Cistac\ica</option>
+            </select>
+        <input type="number" name="budget" value="0" min="0" class="form-control" required="" id="id_budget"placeholder="BUDGET">
+        <input type="date" name="date" class="form-control" required="" id="id_date"placeholder="DATE OF WORK">
+        <input type="hidden" name="user_of_post" class="form-control" value="" id="user">
+        <input type="submit" value="Submit" class="btn-success">
+    </form>
+                    <script>
+                          function goBack() {
+                              window.history.back();
+                         }
+                        var name ="{{ user.id }}";
+                        document.getElementById("user").value = name;
+                    </script>
+</div>
+
+{% endif %}
+{% endif %}
+{% endblock %}
