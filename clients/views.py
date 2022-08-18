@@ -24,6 +24,19 @@ class ShowAllWorkers(ListView):
     def get_queryset(self):
         return ClientsUsers.objects.filter(user_type=ClientsUsers.worker)
 
+
 #
 # def TailwindDashboardTemplate(request):
 #     return render(request, "index.html", {})
+
+6
+
+
+class UserProfilePage(DetailView):
+    model = ClientsUsers
+    template_name = "profile.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserProfilePage, self).get_context_data(*args, **kwargs)
+        stuff = get_object_or_404(ClientsUsers, pk=self.kwargs['pk'])
+        return context
