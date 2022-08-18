@@ -6,6 +6,10 @@ from django.contrib import messages
 
 
 def HomePageView(request):
+    return render(request, "homepage.html", {})
+
+
+def LoginPage(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -16,4 +20,4 @@ def HomePageView(request):
 
         else:
             return redirect('login')
-    return render(request, "homepage.html", {})
+    return render(request, "signin.html", {})
