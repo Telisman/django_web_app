@@ -12,12 +12,12 @@ def AddOfferPage(request):
         form = AddChoresForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('')
+            return HttpResponseRedirect('OfferView')
     else:
         pass
 
     form = AddChoresForm
-    return render(request, "form_add_offer.html", {'form': form})
+    return render(request, "add_offer.html", {'form': form})
 
 
 # show all offers
