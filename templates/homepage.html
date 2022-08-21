@@ -2,29 +2,26 @@
 {% load tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+<!--head start-->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Play | Free Tailwind CSS Template for Startup and SaaS By TailGrids
+     HouseWork
     </title>
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.png"
-      type="image/x-icon"
-    />
-
+    <!-- CSS files   -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/tailwind2.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
     <!-- ==== WOW JS ==== -->
     <script src="assets/js/wow.min.js"></script>
     <script src="{% static 'js/wow.min.js' %}"></script>
-
     <script>
       new WOW().init();
     </script>
   </head>
+<!--head stop -->
+<!--Body start-->
   <body>
     <!-- ====== Navbar Section Start -->
     <div
@@ -34,20 +31,7 @@
         <div class="relative -mx-4 flex items-center justify-between">
           <div class="flex w-full items-center justify-between px-4">
             <div>
-              <button
-                id="navbarToggler"
-                class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
-              >
-                <span
-                  class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                ></span>
-                <span
-                  class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                ></span>
-                <span
-                  class="relative my-[6px] block h-[2px] w-[30px] bg-white"
-                ></span>
-              </button>
+
               <nav
                 id="navbarCollapse"
                 class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6"
@@ -55,7 +39,7 @@
                 <ul class="blcok lg:flex">
                   <li class="group relative">
                     <a
-                      href="#home"
+                      href="{% url 'housemaster'%}"
                       class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70"
                     >
                       Home
@@ -70,13 +54,9 @@
                     </a>
                   </li>
                   <li class="group relative">
-                    <a
-                      href="#pricing"
-                      class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12"
-                    >
-                      Pricing
-                    </a>
+                    <a href="#pricing" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">Pricing</a>
                   </li>
+
                   <li class="group relative">
                     <a
                       href="#team"
@@ -116,6 +96,9 @@
     </div>
     <!-- ====== Navbar Section End -->
 
+{% block content %}
+
+
     <!-- ====== Hero Section Start -->
     <div
       id="home"
@@ -147,6 +130,9 @@
       </div>
     </div>
     <!-- ====== Hero Section End -->
+
+
+
 
 
     <!-- ====== About Section Start -->
@@ -201,6 +187,12 @@
       </div>
     </section>
     <!-- ====== About Section End -->
+
+
+
+
+
+
 
     <!-- ====== Pricing Section Start -->
     <section
@@ -382,6 +374,10 @@
       </div>
     </section>
     <!-- ====== Pricing Section End -->
+
+
+
+
 
     <!-- ====== Faq Section Start -->
     <section
@@ -1315,6 +1311,10 @@
       </div>
     </section>
     <!-- ====== Contact End ====== -->
+
+
+
+    {% endblock %}
 
     <!-- ====== Footer Section Start -->
     <footer

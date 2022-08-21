@@ -1,48 +1,72 @@
-{% extends "user_dashboard_page.html" %}
+{% extends "dashboard.html" %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/offer_detail_view.css' %}">
 {% block content %}
 {% if user.is_authenticated %}
 
 
-<section class="bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 mb-4 mb-sm-5">
-                <div class="card card-style1 border-0">
-                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="...">
-                            </div>
-                            <div class="col-lg-6 px-xl-10">
-                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                    <h3 class="h2 text-white mb-0">{{ chorespost.user_of_post.username }}</h3>
+<div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none offer-detail" style="margin-left: 20%; margin-top:2%;">
+    <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
+        <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
+            <h6>Title: {{ chorespost.name }}</h6>
+            <p class="leading-normal text-sm">
+                <i class="fa fa-user text-lime-500"></i>
+                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Post owner:</h6>
+                <span class="font-semibold">{{ chorespost.user_of_post.username }}</span>
+            </p>
+        </div>
+        <div class="flex-auto p-4">
+            <div class="before:border-r-solid relative before:absolute before:top-0 before:left-4 before:h-full before:border-r-2 before:border-r-slate-100 before:content-[''] before:lg:-ml-px">
+                <div class="relative mb-4 mt-0 after:clear-both after:table after:content-['']">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                        <i class="fa fa-key text-lime-500"></i>
+                    </span>
+                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
+                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Id number:</h6>
+                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.pk }}</p>
+                    </div>
+                </div>
+                <div class="relative mb-4 after:clear-both after:table after:content-['']">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                      <i class="fa fa-calendar text-lime-500" ></i>
+                    </span>
+                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
+                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Date of post:</h6>
+                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.date_of_post }}</p>
+                    </div>
+                </div>
+                <div class="relative mb-4 after:clear-both after:table after:content-['']">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                      <i class="fa fa-money text-lime-500" ></i>
+                    </span>
+                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
+                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Payments for the post:</h6>
+                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.budget }} rsd</p>
+                    </div>
+                </div>
+                <div class="relative mb-4 after:clear-both after:table after:content-['']">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                            <i class="fa fa-calendar-check-o text-lime-500"></i>
+                        </span>
+                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
+                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Job start:
+                            #4395133</h6>
+                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.date }}</p>
+                    </div>
+                </div>
+                <div class="relative mb-4 after:clear-both after:table after:content-['']">
+                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
+                      <i class="fa fa-comment text-lime-500" ></i>
 
-                                </div>
-                                <ul class="list-unstyled mb-1-9">
-                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">First name:</span> {{ chorespost.user_of_post.first_name }}</li>
-                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Last name:</span> {{ chorespost.user_of_post.last_name }}</li>
-                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Date of birth:</span> {{ chorespost.user_of_post.date_of_birth }}</li>
-                                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600"> Address: </span> </li>
-                                </ul>
-
-                            </div>
-                        </div>
+                    </span>
+                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
+                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Post description:</h6>
+                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.bio }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 mb-4 mb-sm-5">
-                <div>
-                    <span class="section-title text-primary mb-3 mb-sm-4">Name of offer:</span><br>
-                    <h3> {{ chorespost.name }}</h3>
-                    <span class="section-title text-primary mb-3 mb-sm-4">Offer description: </span>
-                    <p> {{ chorespost.bio }} </p>
-                </div>
-            </div>
-
         </div>
     </div>
-</section>
+</div>
+
 {% endif %}
 {% endblock %}

@@ -4,10 +4,29 @@ from django.urls import reverse_lazy
 from .forms import SingUpForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from clients.models import ClientsUsers
+import urllib.request
+import json
+import requests
+import datetime
 
 
 def UserDashbordPage(request):
-    return render(request, "dashboard.html", {})
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=16afaa2e90dcdea0eaa852fc47782ac2'
+    city = 'Belgrade'
+    city_weather = requests.get(url.format(city)).json()  # request the API data and convert the JSON
+    current_date_time = datetime.datetime.now()
+    weather = {
+        'city': city,
+        'temperature': city_weather['main']['temp'],
+        'description': city_weather['weather'][0]['description'],
+        'icon': city_weather['weather'][0]['icon']
+    }
+    context = {'weather': weather,
+               'current_date_time': current_date_time,
+               }
+
+    return render(request, 'dashboard.html', context)  # returns the index.html template
+    # return render(request, "dashboard.html", {})
 
 
 class UserRegisterView(generic.CreateView):
