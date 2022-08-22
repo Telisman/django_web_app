@@ -1,0 +1,43 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% load tailwind_tags %}
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_detail_profile.css' %}">
+<div class="container profile_user">
+
+    <div class="grid-7 element-animation">
+        <!--card-1-->
+        <div class="card color-card">
+            <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w"
+                 alt="profile-pic" class="profile">
+            <h1 class="title">{{workers.first_name}} {{workers.last_name}}</h1>
+            <p class="job-title"> User Type:<br> Worker</p>
+            <div class="desc top">
+                <p><i class="fa fa-user" aria-hidden="true"></i>
+                    Username:<br> {{workers.username}}</p>
+
+                <p><i class="fa fa-calendar" aria-hidden="true"></i>
+                    Date of birth:<br> {{workers.date_of_birth}}</p>
+
+                <p><i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+                    Joined:<br> {{workers.date_joined}}</p>
+
+                <p><i class="fa fa-info" aria-hidden="true"></i>
+                    Bio:<br> {{workers.bio}}</p>
+
+                <p><i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    Email address:<br>{{workers.email}}</p>
+
+                <p><i class="fa fa-mobile" aria-hidden="true"></i>
+                    Phone number:<br> {{workers.phone_number}}</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+{% endblock %}
