@@ -4,14 +4,15 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
 
-<div id="app">
-    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-        <div class="p-4 pb-0 mb-0 bg-white rounded-t-2xl">
-            <h6 class="mb-1">Projects</h6>
+<div class="container">
+    <div class="relative flex flex-col min-w-0 mb-4 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border ">
+        <div class="p-4 pb-0 mb-0 bg-white rounded-t-2xl bac-image">
+            <h6 class="mb-1 h6-color">Projects</h6>
             <p class="leading-normal text-sm offers_text">Offers:</p>
         </div>
-        <div class="flex-auto p-4">
+        <div class="flex-auto p-4" style="text-align: center; justify-content: center; margin-left: 17%;">
             <div class="flex flex-wrap -mx-3">
                 {% for offers in offers %}
                 <div class="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12">
@@ -46,10 +47,7 @@
     </div>
 
 
-</div>
-
-
-<script>
+    <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -61,7 +59,19 @@
   fbq('init', '658339141622648');
   fbq('track', 'PageView');
 
-</script>
+
+
+
+
+
+
+
+
+
+    </script>
+
+</div>
+
 {% endif %}
 {% endblock %}
 

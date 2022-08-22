@@ -1,5 +1,6 @@
-{% extends "user_dashboard_page.html" %}
+{% extends "dashboard.html" %}
 {% load static %}
+{% load tailwind_tags %}
 {% block content %}
 {% if user.is_authenticated %}
 
@@ -8,70 +9,105 @@
 {% load i18n %}
 {% if message_list %}
 
-  <section class="sidebar">
-    <div class="sidebar--inner">
-      <div class="is-settings--parent">
-      <div class="sidebar-menu">
-        <ul>
-          <li class="inboxItem isActive"><a href="#0">Inbox (<span class="numCount"></span>)</a></li>
-          <li class="sentItem"><a href="{% url 'messages_outbox' %}">Sent</a></li>
-          <li class="spamItem"><a href="#0">Spam</a></li>
-          <li class="trashItem"><a href="{% url 'messages_trash' %}">Trash</a></li>
-        </ul>
-      </div>
-    </div>
-    </div>
-  </section>
-<section class="view">
 
-    <section class="emails is-component">
-      <div class="emails--inner">
-      <div>
-          <h1 class="email-type">Inbox</h1>
-          <!-- inbox email cards -->
-          {% for message in message_list %}
-          <div class="inbox">
-              <div class="email-card">
-                <div class="is-email--section has-img">
-                  <div class="sender-img" style="">
-                  </div>
-                </div>
-                <div class="is-email--section has-content">
-                  <div class="sender-inner--content">
-                    <p class="sender-name">From: {{ message.sender.username }}</p>
-                    <p class="email-sum">Subject: <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a></p>
-                    <p class="email-sum">Time: {{ message.sent_at|date:_("DATETIME_FORMAT") }}</p>
-<!--                    <p class="email-sum">Body: {{ message.body }}</p>-->
-                  </div>
-                </div>
-                <div class="email-action">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-                    <span><a href="{% url 'messages_delete' message.id %}"><img src="https://gmailapp.surge.sh/assets/images/trashcan.png" alt="" class="action-icon trash"></a></span>
-                     {% if message.recipient.pk == user.pk %}
-                    <span><a href="{% url 'messages_reply' message.id %}"> <img src="https://gmailapp.surge.sh/assets/images/reply.png" alt="" class="action-icon"></a></span>
-                    {% endif %}
-                </div>
-              </div>
 
-          </div>
-          {% endfor %}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body bg-primary text-white mailbox-widget pb-0">
+            <h2 class="text-white pb-3">Mailbox</h2>
+            <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox"
+                       href="#inbox" role="tab" aria-selected="true">
+                        <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                        <span class="d-none d-md-block"> INBOX</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-controls="sent"
+                       href="{% url 'messages_outbox' %}"
+                       role="tab" aria-selected="false">
+                        <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                        <span class="d-none d-md-block">SENT</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="spam-tab" aria-controls="spam"
+                       href="{% url 'messages_trash' %}"
+                       role="tab" aria-selected="false">
+                        <span class="d-block d-md-none"><i class="ti-panel"></i></span>
+                        <span class="d-none d-md-block">TRASH</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-
-      </div>
-    </section>
-
-
-
-    <section class="full-email-view is-component">
-
-
-    </section>
-
-
-</section>
-
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                <div>
+                    <div class="row p-4 no-gutters align-items-center">
+                        <div class="col-sm-12 col-md-6">
+                            <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>Inbox</h3>
+                        </div>
+                    </div>
+                    <!-- Mail list-->
+                    <div class="table-responsive">
+                        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                            <tbody>
+                            {% for message in message_list %}
+                            <tr class="">
+                                <!-- star -->
+                                <td><i class="fa fa-star text-warning"></i></td>
+                                <!-- User -->
+                                <td>
+                                    <span class="badge badge-pill text-white font-medium badge-success mr-2">Sent by:</span>
+                                    <span class="mb-0 text-muted font-light">{{ message.sender.username }}</span>
+                                </td>
+                                <!-- Message -->
+                                <td>
+                                    <a class="link" href="{{ message.get_absolute_url }}">
+                                        <span class="badge badge-pill text-white font-medium badge-primary mr-2">Subject</span><span
+                                            class="font-light text-dark"> {{ message.body|safe|truncatewords:10 }}</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill text-white font-medium badge-warning mr-2">Sent at:</span>
+                                    <span class="mb-0 text-muted font-light">{{ message.sent_at|date:_("DATETIME_FORMAT") }}</span>
+                                </td>
+                                <!-- Attachment -->
+                                <td>
+                                    <a href="{% url 'messages_delete' message.id %}">
+                                        <button class="btn btn-circle btn-danger text-white"
+                                                href="{% url 'messages_delete' message.id %}">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                        <span class="ml-2 font-normal text-dark">Delete</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    {% if message.recipient.pk == user.pk %}
+                                    <a href="{% url 'messages_reply' message.id %}">
+                                        <button class="btn btn-circle btn-success text-white"
+                                                href="{% url 'messages_reply' message.id %}">
+                                            <i class="fa fa-reply"></i>
+                                        </button>
+                                        <span class="ml-2 font-normal text-dark">Replay</span>
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endif %}
 {% endif %}
-
-
 {% endblock %}
