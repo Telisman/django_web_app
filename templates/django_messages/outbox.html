@@ -1,27 +1,93 @@
-{% extends "django_messages/base.html" %}
+{% extends "dashboard.html" %}
 {% load i18n %}
-
+{% load static %}
+{% load tailwind_tags %}
 {% block content %}
-<h1>{% trans "Sent Messages" %}</h1>
 {% if message_list %}
-<table class="messages">
-    <thead>
-        <tr><th>{% trans "Recipient" %}</th><th>{% trans "Subject" %}</th><th>{% trans "Sent" %}</th><th>{% trans "Action" %}</th></tr>
-    </thead>
-    <tbody>
-{% for message in message_list %}
-    <tr>
-        <td>{{ message.recipient }}</td>
-        <td>
-        <a href="{{ message.get_absolute_url }}">{{ message.subject }}</a>
-        </td>
-        <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
-        <td><a href="{% url 'messages_delete' message.id %}?next={% url 'messages_outbox' %}">{% trans "delete" %}</a></td>
-    </tr>
-{% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>{% trans "No messages." %}</p>
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/inbox.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body bg-primary text-white mailbox-widget pb-0">
+            <h2 class="text-white pb-3">Mailbox</h2>
+            <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox"
+                       href="#inbox" role="tab" aria-selected="true">
+                        <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                        <span class="d-none d-md-block"> SENT</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-controls="sent"
+                       href="{% url 'messages_inbox' %}"
+                       role="tab" aria-selected="false">
+                        <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                        <span class="d-none d-md-block">INBOX</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="spam-tab" aria-controls="spam"
+                       href="{% url 'messages_trash' %}"
+                       role="tab" aria-selected="false">
+                        <span class="d-block d-md-none"><i class="ti-panel"></i></span>
+                        <span class="d-none d-md-block">TRASH</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                <div>
+                    <div class="row p-4 no-gutters align-items-center">
+                        <div class="col-sm-12 col-md-6">
+                            <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>Sent</h3>
+                        </div>
+                    </div>
+                    <!-- Mail list-->
+                    <div class="table-responsive">
+                        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                            <tbody>
+                            {% for message in message_list %}
+                            <tr class="">
+                                <!-- star -->
+                                <td><i class="fa fa-star text-warning"></i></td>
+                                <!-- User -->
+                                <td>
+                                    <span class="badge badge-pill text-white font-medium badge-success mr-2">Sender:</span>
+                                    <span class="mb-0 text-muted font-light">{{ message.sender.username }} </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill text-white font-medium badge-secondary mr-2">Recipient:</span>
+                                    <span class="mb-0 text-muted font-light">{{ message.recipient.first_name }}{{ message.recipient.last_name }} </span>
+                                </td>
+                                <!-- Message -->
+                                <td>
+                                    <a class="link" href="{{ message.get_absolute_url }}">
+                                        <span class="badge badge-pill text-white font-medium badge-primary mr-2">Subject</span><span
+                                            class="font-light text-dark"> {{ message.body|safe|truncatewords:10 }}</span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="badge badge-pill text-white font-medium badge-warning mr-2">Sent at:</span>
+                                    <span class="mb-0 text-muted font-light">{{ message.sent_at|date:_("DATETIME_FORMAT") }}</span>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endif %}
 {% endblock %}
