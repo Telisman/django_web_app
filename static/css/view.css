@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+
+.header {
+    border-bottom: 2px solid whitesmoke;
+    padding-top: 2%;
+    justify-content: center;
+    margin-left: 4%;
+    margin-right: 4%;
+    display: flex;
+
+
+}
+.header p{
+font-size:14px;
+color: #007bff;
+
+}
+.header h3{
+font-size:18px;
+font-family: 'Merriweather', serif;
+
+}
+
+
+.body {
+padding-top:8%;
+padding-left:25%;
+padding-right:25%;
+padding-bottom:2%;
+height:73vh;
+}
+
+
+.functions {
+padding-left:80%;
+}
+
+.functions a {
+color:white;
+}

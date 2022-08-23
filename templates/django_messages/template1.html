@@ -25,3 +25,79 @@
 <!--<p>{% trans "No messages." %}</p>-->
 <!--{% endif %}-->
 <!--{% endblock %}-->
+
+<!--/sent messeges end-->
+
+<!--view messege start-->
+<!--{% extends "django_messages/inbox.html" %}-->
+<!--{% load i18n %}-->
+<!--{% if user.is_authenticated %}-->
+
+<!--{% block content %}-->
+<!--<h1>{% trans "View Message" %}</h1>-->
+<!--<dl class="message-headers">-->
+<!--    <dt>{% trans "Subject" %}</dt>-->
+<!--    <dd><strong>{{ message.subject }}</strong></dd>-->
+<!--    <dt>{% trans "Sender" %}</dt>-->
+<!--    <dd>{{ message.sender }}</dd>-->
+<!--    <dt>{% trans "Date" %} </dt>-->
+<!--    <dd>{{ message.sent_at|date:_("DATETIME_FORMAT")}}</dd>-->
+<!--    <dt>{% trans "Recipient" %}</dt>-->
+<!--    <dd>{{ message.recipient }}</dd>-->
+<!--</dl>-->
+<!--{{ message.body|linebreaksbr }}<br /><br />-->
+
+<!--{% if message.recipient.pk == user.pk %}-->
+<!--<a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a>-->
+<!--{% endif %}-->
+<!--<a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a>-->
+
+<!--{% comment %}Example reply_form integration-->
+<!--{% if reply_form %}-->
+<!--<h1>{% trans "Compose reply"%}</h1>-->
+<!--<form action="{% url 'messages_reply' message.id %}" method="post">-->
+<!--{% csrf_token %}-->
+<!--<table>-->
+<!--{{ reply_form.as_table }}-->
+<!--</table>-->
+<!--<input type="submit" value="{% trans 'Send' %} &raquo;"/>-->
+<!--</form>-->
+<!--{% endif %}-->
+<!--{% endcomment %}-->
+<!--{% endblock %}-->
+<!--{% endif %}-->
+<!--&lt;!&ndash;    <section class="full-email-view is-component">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="email-view&#45;&#45;inner">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="from">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="fromImg isFrom-component" style="background-image: url(https://gmailapp.surge.sh/assets/images/bradsmith.jpg);">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="fromSub isFrom-component">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="emailSection">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="is-default">From:</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              <strong class="fromName">{{ message.sender.username }}</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="emailSection">&ndash;&gt;-->
+<!--&lt;!&ndash;              <span class="is-default">Subject:</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              {{ message.subject }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="the-email">&ndash;&gt;-->
+<!--&lt;!&ndash;            <p> {{ message.body }}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="the-reply">&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="isReplyParent">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="replyBox">&ndash;&gt;-->
+<!--&lt;!&ndash;            <textarea name="" id=""></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="submit" value="Reply">&ndash;&gt;-->
+
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </section></section>&ndash;&gt;-->

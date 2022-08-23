@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+
+
+
+.header-picture {
+background-image: url("image/curved6.jpg");
+  background-repeat: cover;
+
+}
+
+.bg-clip-border h3{
+padding-top:10%;
+text-align:center;
+}
+.rounded-t-2xl {
+text-align:center;
+}
+.p-4{
+text-align:center;
+}
+.weather {
+padding-top:5%;
+background-image: url("image/weather.jpg");
+background-repeat:no-repeat;
+background-size: 100% 100%;
+text-align:center;
+text-size:24px;
+}
+.weather h1{
+font-size:58px;
+color:#ca2898;
+}
+.weather h6{
+font-size:58px;
+color:#ca2898;
+}
+.weather h5{
+font-size:24px;
+color:#ca2898;
+}
+.time {
+background-image: url("image/clock.jpg");
+ opacity: 0.8;
+}
+.time h3 {
+color:white;
+font-family: 'Merriweather', serif;
+letter-spacing:10px;
+ opacity: 1;
+}
+
+.profile_setting {
+background-image: url("image/profile_image_dashboard_back.jpg");
+
+}
