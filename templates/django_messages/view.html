@@ -60,10 +60,10 @@
                     <p>{{ message.body|linebreaksbr }}</p>
                     <div class="functions">
                         {% if message.recipient.pk == user.pk %}
-                        <span class="badge badge-pill text-white font-medium badge-primary mr-2"> <a href="{% url 'messages_reply' message.id %}" ><i class="fa fa-reply-all" aria-hidden="true"></i>{% trans "Reply" %}</a>
+                        <span class="badge badge-pill text-white font-medium badge-primary mr-2"> <a href="{% url 'messages_reply' message.id %}" ><i class="fa fa-reply-all" aria-hidden="true"></i>&nbsp{% trans "Reply" %}</a>
                         </span>
                             {% endif %}
-                        <span class="badge badge-pill text-white font-medium badge-danger mr-2"><a href="{% url 'messages_delete' message.id %}" ><i class="fa fa-trash" aria-hidden="true"></i>{% trans "Delete" %}</a>
+                        <span class="badge badge-pill text-white font-medium badge-danger mr-2"><a href="{% url 'messages_delete' message.id %}" ><i class="fa fa-trash" aria-hidden="true"></i>&nbsp{% trans "Delete" %}</a>
                         </span>
                     </div>
                 </div>
