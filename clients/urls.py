@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import UserRegisterView, UserDashbordPage, ShowAllWorkers, UserProfilePage
+from .views import UserRegisterView, UserDashbordPage, ShowAllWorkers, UserProfilePage, Settings
 from django.urls import re_path as url
 
 urlpatterns = [
@@ -7,6 +7,7 @@ urlpatterns = [
     path('user-dashboard/', UserDashbordPage, name='user-dashboard'),
     path('workers-profile/', ShowAllWorkers.as_view(), name='workers-profile'),
     path('profile/<int:pk>', UserProfilePage.as_view(), name='profile'),
+    path('settings/>', Settings.as_view(), name='settings'),
     # path('tailwind-dashboard/', TailwindDashboardTemplate, name='tailwind-dashboard'),
     url(r'^messages/', include('django_messages.urls')),
 ]

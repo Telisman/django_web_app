@@ -220,7 +220,7 @@
                     </a>
                   </li>
                   <li class="z-30 flex-auto text-center" style="color:#ca2898;">
-                    <a class="z-30 block w-full px-0 py-1 mb-0 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit text-slate-700" nav-link href="javascript:;" role="tab" aria-selected="false" style="color:#ca2898;">
+                    <a class="z-30 block w-full px-0 py-1 mb-0 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit text-slate-700" nav-link href="{% url 'settings' %}" role="tab" aria-selected="false" style="color:#ca2898;">
                       <i class="fa fa-cogs" aria-hidden="true"></i>
                       <span class="ml-1">Settings</span>
                     </a>
@@ -241,7 +241,7 @@
                     <h6 class="mb-0">Profile Information</h6>
                   </div>
                   <div class="w-full max-w-full px-3 text-right shrink-0 md:w-4/12 md:flex-none">
-                    <a href="javascript:;" data-target="tooltip_trigger" data-placement="top">
+                    <a href="{% url 'settings' %}" data-target="tooltip_trigger" data-placement="top">
                       <i class="leading-normal fas fa-user-edit text-sm text-slate-400"></i>
                     </a>
                     <div data-target="tooltip" class="hidden px-2 py-1 text-center text-white bg-black rounded-lg text-sm" role="tooltip">

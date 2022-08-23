@@ -1,0 +1,26 @@
+.form-control label {
+color:#007bff;
+font-family: 'Merriweather', serif;
+font-size: 18px;
+padding-right:2%
+text-gray:700;
+}
+
+.form-control input {
+background-color:#D3D3D3;
+border: 1px solid white;
+border-radius:3px;
+padding-left:4px;font-family: 'Merriweather', serif;
+margin-top:2%;
+}
+
+
+.form-control textarea {
+background-color:#D3D3D3;
+margin-left:-10%;
+border-radius:3px;
+height:90%;
+width:130%;
+color:white;
+text-align:center;
+}

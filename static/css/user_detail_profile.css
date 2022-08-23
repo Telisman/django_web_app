@@ -1,14 +1,18 @@
 .profile_user{
-background-image: url("image/curved6.jpg");
-  background-repeat: cover;
-    padding-bottom: 4%;
-
+background-image: url("image/curved14.jpg");
+background-size:100% 100%;
+border:1px solid black;
+border-radius:2%;
+margin-bottom:20%;
 }
 .color-card{
   background:#31394D;
 }
 
-
+.ease-soft-in-out{
+padding-top:1%;
+padding-bottom:2%;
+}
 .title{
   color:#ffffff;
   font-family: roboto;

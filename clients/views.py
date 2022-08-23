@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
-from .forms import SingUpForm
+from .forms import SingUpForm, UserSettings
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from clients.models import ClientsUsers
 import urllib.request
@@ -53,3 +53,12 @@ class UserProfilePage(DetailView):
         context = super(UserProfilePage, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(ClientsUsers, pk=self.kwargs['pk'])
         return context
+
+
+class Settings(generic.UpdateView):
+    form_class = UserSettings
+    template_name = 'user_settings.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return self.request.user
