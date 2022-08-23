@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap');
+.header h3{
+font-size:18px;
+font-family: 'Merriweather', serif;
+
+}
+
+.body {
+padding-top:4%;
+padding-left:25%;
+padding-right:25%;
+padding-bottom:2%;
+height:73vh;
+}
+
+
+.body h1 {
+    font-family: 'Merriweather', serif;
+    text-align: center;
+    padding-bottom: 4%;
+    color: #007bff;
+    font-size: 48px;
+}
+.form_replay{
+text-align:center;
+}
+.form_replay label {
+color:#007bff;
+font-family: 'Merriweather', serif;
+font-size: 21px;
+padding-right:2%
+text-gray:700;
+}
+
+.form_replay input {
+background-color:#D3D3D3;
+border: 1px solid white;
+border-radius:3px;
+padding-left:4px;font-family: 'Merriweather', serif;
+}
+
+
+.form_replay textarea {
+background-color:#D3D3D3;
+margin-left:-10%;
+border-radius:3px;
+height:90%;
+width:130%;
+color:white;
+text-align:center;
+}
