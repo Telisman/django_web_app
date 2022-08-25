@@ -1,20 +1,36 @@
 {% extends "dashboard.html" %}
-
 {% load static %}
 {% load tailwind_tags %}
-
 {% block content %}
 {% if user.is_authenticated %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/users_profile.css' %}">
+<div class="container-fluid filter">
+    <h1>Our clients</h1>
+    <form class="d-flax filter_form" method="get">
+        <label for="id_user_type">User type:</label>
+        <select name="user_type" id="id_user_type">
+            <option value="" selected="">---------</option>
+            <option value="1">Worker</option>
+            <option value="2">Owner</option>
+        </select>
+        <label for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" id="id_last_name">
+        <label for="id_first_name">First name:</label>
+        <input type="text" name="first_name" id="id_first_name">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" id="id_username">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter</button>
+    </form>
+</div>
 <section class="card container grid">
     <div class="card__container grid">
         <!--==================== CARD  ====================-->
-        {% for workers in workers %}
+        {% for listing_filter in listing_filter.qs %}
         <article class="card__content grid">
             <div class="card__pricing">
                 <div class="card__pricing-number">
-                    <span class="card__pricing-symbol">Id:</span> {{ workers.pk }}
+                    <span class="card__pricing-symbol">Id:</span> {{ listing_filter.pk }}
                 </div>
 
             </div>
@@ -25,7 +41,7 @@
                 </div>
 
                 <span class="card__header-subtitle">Username:</span>
-                <h1 class="card__header-title">{{ workers.username }}</h1>
+                <h1 class="card__header-title">{{ listing_filter.username }}</h1>
             </header>
 
             <div class="flex-auto p-4">
@@ -38,7 +54,7 @@
                         <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
                             <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Full name:</h6>
                             <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">
-                                {{ workers.first_name }} {{ workers.last_name }}
+                                {{ listing_filter.first_name }} {{ listing_filter.last_name }}
                             </p>
                         </div>
                     </div>
@@ -49,7 +65,7 @@
                         <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
                             <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Date of birth:</h6>
                             <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">
-                                {{ workers.date_of_birth }}</p>
+                                {{ listing_filter.date_of_birth }}</p>
                         </div>
                     </div>
                     <div class="relative mb-4 after:clear-both after:table after:content-['']">
@@ -60,7 +76,7 @@
                             <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">
                                 joined in</h6>
                             <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">
-                                {{ workers.date_joined }}
+                                {{ listing_filter.date_joined }}
                             </p>
                         </div>
                     </div>
@@ -69,47 +85,12 @@
             </div>
 
 
-            <button class="card__button"><a href="{% url 'profile' workers.pk %}">See profile</a></button>
+            <button class="card__button"><a href="{% url 'profile' listing_filter.pk %}">See profile</a></button>
         </article>
         {% endfor %}
 
     </div>
 </section>
-
-<!--<div class="container">-->
-<!--    <div class="row">-->
-<!--        {% for workers in workers %}-->
-<!--        <div class="col-4">-->
-<!--            <figure class="snip1344">-->
-<!--                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile-sample1"-->
-<!--                     class="background"/>-->
-<!--                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample1.jpg" alt="profile-sample1"-->
-<!--                     class="profile"/>-->
-<!--                <figcaption>-->
-<!--                    <h3>Ursula Gurnmeister<span>Engineer</span></h3>-->
-<!--                    <div class="icons"><a href="#"><i class="ion-social-reddit-outline"></i></a><a href="#">-->
-<!--                        <i class="ion-social-twitter-outline"></i></a><a href="#"> <i-->
-<!--                            class="ion-social-vimeo-outline"></i></a>-->
-<!--                    </div>-->
-<!--                </figcaption>-->
-<!--            </figure>-->
-<!--        </div>-->
-<!--        {% endfor %}-->
-<!--    </div>-->
-<!--</div>-->
-
-
-<!--        {% for workers in workers %}-->
-<!--          <div class="col-md-4" data-aos="fade-up">-->
-<!--            <div class="icon-box">-->
-
-<!--              <h4 class="title">{{ workers.username }}</h4>-->
-<!--              <p class="description">Ime: {{ workers.first_name }}</p>-->
-<!--              <p class="description">Prezime: {{ workers.last_name }}</p>-->
-
-<!--            </div>-->
-<!--          </div>-->
-<!--        {% endfor %}-->
 
 
 {% endif %}

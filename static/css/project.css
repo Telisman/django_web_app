@@ -6,7 +6,7 @@ background-image: url("image/curved0.jpg");
 color:white;
 }
 .off-image {
-    background-color: floralwhite;
+    background-color: #D3D3D3;
 }
 
 .filter {
@@ -15,7 +15,7 @@ padding-bottom:2%;
 }
 
 .filter form label{
-color:#007bff;
+color:black ;
 font-family: 'Merriweather', serif;
 font-size: 18px;
 padding-right:2%

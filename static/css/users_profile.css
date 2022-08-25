@@ -267,3 +267,37 @@ img {
     font-size: var(--small-font-size);
   }
 }
+
+
+
+.filter {
+  padding-top: 1.25rem;
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding-bottom:2%;
+;
+}
+
+.filter form label{
+color:black ;
+font-family: 'Merriweather', serif;
+font-size: 18px;
+padding-right:2%
+text-gray:700;
+}
+.filter form input{
+background-color:#D3D3D3;
+border: 1px solid black;
+border-radius:3px;
+padding-left:4px;font-family: 'Merriweather', serif;
+margin-top:2%;
+}
+.filter form select{
+background-color:#D3D3D3;
+border: 1px solid black;
+border-radius:3px;
+padding-left:4px;font-family: 'Merriweather', serif;
+margin-top:2%;
+}
+
+
