@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'django_filters',
+    'crispy_forms',
 ]
 INTERNAL_IPS = ["127.0.0.1", ]
 TAILWIND_APP_NAME = 'theme'

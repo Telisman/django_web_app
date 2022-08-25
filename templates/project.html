@@ -1,6 +1,7 @@
 {% extends "dashboard.html" %}
 {% load static %}
 {% load tailwind_tags %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -12,9 +13,36 @@
             <h6 class="mb-1 h6-color">Projects</h6>
             <p class="leading-normal text-sm offers_text">Offers:</p>
         </div>
+        <div class="flex-auto p-4 filter">
+            <form class="d-flax filter_form" method="get">
+
+                <label>Name of post: </label><input type="text" name="name" value="" id="id_name">
+                <label>Category:</label>
+                <select name="category" id="id_category">
+                    <option value="" selected="">---------</option>
+                    <option value="1">Vodoinstalater\ka</option>
+                    <option value="2">Eelektricar\ka</option>
+                    <option value="3">Moler\ka</option>
+                    <option value="4">Stolar\ka</option>
+                    <option value="5">IT</option>
+                    <option value="6">Zidar\ka</option>
+                    <option value="7">Cistac\ica</option>
+                </select>
+
+                <label>Date of publish:</label><input type="date" name="date_of_post" id="id_date_of_post"></br>
+                <label for="id_budget__lt">Budget is less than:</label>
+                <input type="number" name="budget__lt" step="any" id="id_budget__lt">
+                <label for="id_budget__gt">Budget is greater than:</label>
+                <input type="number" name="budget__gt" step="any" id="id_budget__gt">
+
+                <label>Start date: </label><input type="date" name="date" id="id_date"><br>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter</button>
+            </form>
+        </div>
+
         <div class="flex-auto p-4" style=" margin-left: 17%;">
             <div class="flex flex-wrap -mx-3">
-                {% for offers in offers %}
+                {% for listing in listing_filter.qs %}
                 <div class="w-full max-w-full px-3 mb-6 md:w-6/12 md:flex-none xl:mb-0 xl:w-3/12 off-image">
                     <div class="relative flex flex-col min-w-0 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                         <div class="relative">
@@ -26,15 +54,15 @@
                         <div class="flex-auto px-1 pt-6">
                             <p class="relative z-10 mb-2 leading-normal text-transparent bg-gradient-to-tl from-gray-900 to-slate-800 text-sm bg-clip-text">
                                 Id number:
-                                {{ offers.post_id }}</p>
+                                {{ listing.post_id }}</p>
                             <a href="javascript:;">
-                                <h5>Title: {{ offers.name }}</h5>
+                                <h5>Title: {{ listing.name }}</h5>
                             </a>
-                            <p class="mb-6 leading-normal text-sm offer_bio">{{ offers.bio|safe|truncatewords:18 }}</p>
+                            <p class="mb-6 leading-normal text-sm offer_bio">{{ listing.bio|safe|truncatewords:18 }}</p>
                             <div class="flex items-center justify-between">
                                 <button type="button"
                                         class="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs tracking-tight-soft border-fuchsia-500 text-fuchsia-500 hover:border-fuchsia-500 hover:bg-transparent hover:text-fuchsia-500 hover:opacity-75 hover:shadow-none active:bg-fuchsia-500 active:text-white active:hover:bg-transparent active:hover:text-fuchsia-500">
-                                    <a href="{% url 'ShowOffer' offers.pk %}">View Project</a>
+                                    <a href="{% url 'ShowOffer' listing.pk %}">View Project</a>
                                 </button>
 
                             </div>
@@ -58,6 +86,87 @@
     'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '658339141622648');
   fbq('track', 'PageView');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
