@@ -6,8 +6,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <title>HouseWorkDashboard</title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -26,11 +24,18 @@
 <!--Body start -->
 <!--user identification start -->
 {% if user.is_authenticated %}
+
+
+<!-- body start -->
   <body class="m-0 font-sans antialiased font-normal text-base leading-default bg-gray-50 text-slate-500">
-    <!-- sidenav  -->
+
+
+    <!-- sidenav  start -->
     <aside class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
       <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
       <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+
+<!--        aside menu start  -->
         <ul class="flex flex-col pl-0 mb-0">
           <li class="mt-0.5 w-full">
             <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors" href="{% url 'user-dashboard' %}">
@@ -55,7 +60,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Dashboard</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Dashboard</span>  <!--Dashboard link -->
             </a>
           </li>
 
@@ -76,7 +81,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Project</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Project</span><!-- Project link-->
             </a>
           </li>
           <li class="mt-0.5 w-full">
@@ -96,13 +101,13 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Add new post</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Add new post</span><!--Add new post link -->
             </a>
           </li>
 
 
           <li class="w-full mt-4">
-            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Account pages</h6>
+            <h6 class="pl-6 ml-2 font-bold leading-tight uppercase text-xs opacity-60">Account pages</h6><!--Account page bottom menu -->
           </li>
 
           <li class="mt-0.5 w-full">
@@ -123,7 +128,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Users Profile</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Users Profile</span><!-- Users Profile link-->
             </a>
           </li>
 
@@ -151,10 +156,11 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Sign Up</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Sign Up</span><!-- Sing up link -->
             </a>
           </li>
         </ul>
+<!--        aside menu end  -->
       </div>
 
     </aside>
@@ -162,10 +168,11 @@
     <!-- end sidenav -->
 
 
+    <!--  dashboard right side  start -->
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
       <!-- cards -->
         <div class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen bg-gray-50 transition-all duration-200">
-          {% block content %}
+          {% block content %} <!-- block content start  -->
       <nav class="absolute z-20 flex flex-wrap items-center justify-between w-full px-6 py-2 text-white transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start" navbar-profile navbar-scroll="true">
         <div class="flex items-center justify-between w-full px-6 py-1 mx-auto flex-wrap-inherit">
           <nav>
@@ -278,10 +285,6 @@
               </div>
             </div>
           </div>
-
-
-
-
           <div class="w-full max-w-full px-3 lg-max:mt-6 xl:w-4/12">
             <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border time">
               <h3>Time:</h3>
