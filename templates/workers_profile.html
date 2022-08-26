@@ -35,9 +35,11 @@
 
             </div>
 
-            <header class="card__header">
-                <div class="card__header-circle grid">
-                    <img src="" alt="" class="card__header-img">
+            <header class="">
+                <div class="">
+                    {% if listing_filter.profile_image %}
+                    <img src="{{ listing_filter.profile_image.url }}" alt="" class="card__header-img">
+                    {% endif %}
                 </div>
 
                 <span class="card__header-subtitle">Username:</span>
