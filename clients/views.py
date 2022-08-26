@@ -40,18 +40,9 @@ def ShowAllWorkers(request):
     workers = ClientsUsers.objects.all()
     listing_filter = FilterUser(request.GET, queryset=workers)
     context = {
-        # 'workers': workers,
         'listing_filter': listing_filter,
     }
-
     return render(request, "workers_profile.html", context)
-
-    # model = ClientsUsers
-    # context_object_name = "workers"
-    # template_name = 'workers_profile.html'
-    #
-    # def get_queryset(self):
-    #     return ClientsUsers.objects.filter(user_type=ClientsUsers.worker)
 
 
 class UserProfilePage(DetailView):
@@ -68,7 +59,7 @@ class UserProfilePage(DetailView):
 class Settings(generic.UpdateView):
     form_class = UserSettings
     template_name = 'user_settings.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('user-dashboard')
 
     def get_object(self):
         return self.request.user
