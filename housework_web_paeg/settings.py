@@ -153,3 +153,11 @@ LOGIN_URL = 'user-dashboard'
 # # LOGOUT_URL = 'logout'
 # LOGIN_REDIRECT_URL = 'user-dashboard'             #nakon login-a redirectovace nas na html stranicu home
 # # LOGOUT_REDIRECT_URL = 'login'
+
+
+# email settings
+EMAIL_HOST = 'localhost'  # gmail host: smtp.gmail.com
+EMAIT_PORT = 8000  # PORT for gmail 465
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''  # your email account
+EMAIL_HOST_PASSWORD = ''  # password of your gmail account

@@ -3,10 +3,22 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.core.mail import send_mail
 
 
 def HomePageView(request):
-    return render(request, "homepage.html", {})
+    if request.method == "POST":
+        fullName = request.POST.get('fullName')
+        sent_email = request.POST.get('sent_email')
+        message = request.POST.get('message')
+        send_mail(
+            fullName,
+            sent_email,
+            message,
+            [],
+        )
+        return render(request, "massage_replay.html", {})
+    return render(request, "homepage.html")
 
 
 def LoginPage(request):
