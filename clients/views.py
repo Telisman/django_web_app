@@ -27,7 +27,6 @@ def UserDashbordPage(request):
                }
 
     return render(request, 'dashboard.html', context)  # returns the index.html template
-    # return render(request, "dashboard.html", {})
 
 
 class UserRegisterView(generic.CreateView):

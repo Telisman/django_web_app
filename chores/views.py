@@ -49,12 +49,3 @@ class ShowOffer(DetailView):
         context = super(ShowOffer, self).get_context_data(*args, **kwargs)
         stuff = get_object_or_404(ChoresPost, pk=self.kwargs['pk'])
         return context
-
-#
-# def search_venues(request):
-#     if request.method == "POST":
-#         searched = request.POST['searched']
-#         venues = ChoresPost.objects.filter(name__icontains=searched)
-#         return render(request, 'search_venues.html', {'searched': searched, 'venues': venues})
-#     else:
-#         return render(request, 'search_venues.html', {})

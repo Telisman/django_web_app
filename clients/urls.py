@@ -8,6 +8,5 @@ urlpatterns = [
     path('workers-profile/', ShowAllWorkers, name='workers-profile'),
     path('profile/<int:pk>', UserProfilePage.as_view(), name='profile'),
     path('settings/>', Settings.as_view(), name='settings'),
-    # path('tailwind-dashboard/', TailwindDashboardTemplate, name='tailwind-dashboard'),
     url(r'^messages/', include('django_messages.urls')),
 ]
