@@ -150,11 +150,8 @@ LOCATION_FIELD = {
 }
 MAPBOX_KEY = "pk.eyJ1IjoiZGF2b3J0ZWxpc21hbiIsImEiOiJjbDVxcWIyYXYwNjRiM2JuMHFhOXNsOHNpIn0.X9zh7Aykb_jL6O6Zo_DfJA"
 LOGIN_URL = 'user-dashboard'
-# # LOGOUT_URL = 'logout'
-# LOGIN_REDIRECT_URL = 'user-dashboard'             #nakon login-a redirectovace nas na html stranicu home
-# # LOGOUT_REDIRECT_URL = 'login'
-
-
+# LOGOUT_URL = 'sing-in'
+LOGOUT_REDIRECT_URL = 'sing-in'
 # email settings
 EMAIL_HOST = 'localhost'  # gmail host: smtp.gmail.com
 EMAIT_PORT = 8000  # PORT for gmail 465
