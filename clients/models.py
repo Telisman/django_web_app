@@ -19,11 +19,12 @@ class ClientsUsers(AbstractUser):
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    email = models.EmailField(max_length=300,validators=[RegexValidator(regex="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.["r"a-zA-Z0-9-.]+$",
-                                                                        message='please enter the correct format')])
+    email = models.EmailField(max_length=300,
+                              validators=[RegexValidator(regex="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.["r"a-zA-Z0-9-.]+$",
+                                                         message='please enter the correct format')])
     date_of_birth = models.DateField(null=True)
     bio = models.TextField(default=" ")
-    # date_of_birth = models.DateField(default=None)
 
     def __str__(self):
-        return self.username + ' | ' +self.last_name + ' | ' + self.first_name + ' | ' + str(self.phone_number) + ' | ' + self.user_type + ' | ' + self.email+ ' | ' + str(self.id)
+        return self.username + ' | ' + self.last_name + ' | ' + self.first_name + ' | ' + str(
+            self.phone_number) + ' | ' + self.user_type + ' | ' + self.email + ' | ' + str(self.id)
