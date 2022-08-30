@@ -19,7 +19,7 @@
                         </p>
                     </div>
                     <div class="flex-auto p-6">
-                        <form action="" method="POST" class="form-control">
+                        <form action="" method="POST" class="form-control" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p}}
                             <button type="submit">Edit</button>

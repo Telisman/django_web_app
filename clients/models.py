@@ -15,7 +15,7 @@ class ClientsUsers(AbstractUser):
     last_name = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=100)
-    profile_image = models.ImageField(null=True, blank=True, default=None)
+    profile_image = models.ImageField(null=True, blank=True, default=None, upload_to='images/')
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

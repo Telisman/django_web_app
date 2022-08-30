@@ -11,7 +11,7 @@ from chores.filters import ChoresPostFilters
 def AddOfferPage(request):
     submitted = False
     if request.method == "POST":
-        form = AddChoresForm(request.POST)
+        form = AddChoresForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return render(request, 'dashboard.html')

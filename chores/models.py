@@ -20,7 +20,7 @@ class ChoresPost(models.Model):  # Job post
     category = models.CharField(max_length=100, choices=ChoresPost_TYPE_CHOICE)  # category
     budget = models.IntegerField(default=0)  # price
     date = models.DateField(null=True)
-    post_image = models.ImageField(null=True, blank=True, default=None)
+    post_image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self):
         return 'Time of post:{} || Description:{} || Name of post:{}'.format(self.date_of_post, self.bio, self.name)
