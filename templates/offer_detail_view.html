@@ -2,82 +2,68 @@
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/offer_detail_view.css' %}">
+
+<main class="container">
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        {% if chorespost.post_image %}
+        <img data-image="red" class="active" src="{{ chorespost.post_image.url }}" alt="">
+        {%endif%}
+    </div>
 
 
-<div class="w-full max-w-full px-3 md:w-1/2 md:flex-none lg:w-1/3 lg:flex-none offer-detail" style="margin-left: 20%; margin-top:2%;">
-    <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
-        <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0">
-            <h6>Title: {{ chorespost.name }}</h6>
-            <p class="leading-normal text-sm">
-                <i class="fa fa-user text-lime-500"></i>
-                <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Post owner:</h6>
-                <span class="font-semibold">{{ chorespost.user_of_post.username }}</span>
-            </p>
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>ID {{ chorespost.pk }}</span>
+            <h1>{{ chorespost.name }}</h1>
+            <p>{{ chorespost.bio }}</p>
         </div>
-        <div class="flex-auto p-4">
-            <div class="before:border-r-solid relative before:absolute before:top-0 before:left-4 before:h-full before:border-r-2 before:border-r-slate-100 before:content-[''] before:lg:-ml-px">
-                <div class="relative mb-4 mt-0 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                        <i class="fa fa-key text-lime-500"></i>
-                    </span>
-                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Id number:</h6>
-                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.pk }}</p>
-                    </div>
-                </div>
-                <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                      <i class="fa fa-calendar text-lime-500" ></i>
-                    </span>
-                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Date of post:</h6>
-                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.date_of_post }}</p>
-                    </div>
-                </div>
-                <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                      <i class="fa fa-money text-lime-500" ></i>
-                    </span>
-                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Payments for the post:</h6>
-                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.budget }} rsd</p>
-                    </div>
-                </div>
-                <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                            <i class="fa fa-calendar-check-o text-lime-500"></i>
-                        </span>
-                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Job start:
-                            #4395133</h6>
-                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.date }}</p>
-                    </div>
-                </div>
-                <div class="relative mb-4 after:clear-both after:table after:content-['']">
-                    <span class="w-6.5 h-6.5 text-base absolute left-4 z-10 inline-flex -translate-x-1/2 items-center justify-center rounded-full bg-white text-center font-semibold">
-                      <i class="fa fa-comment text-lime-500" ></i>
 
-                    </span>
-                    <div class="ml-11.252 pt-1.4 lg:max-w-120 relative -top-1.5 w-auto">
-                        <h6 class="mb-0 font-semibold leading-normal text-sm text-slate-700">Post description:</h6>
-                        <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">{{ chorespost.bio }}</p>
-                    </div>
+     
+        <div class="product-configuration">
+
+            <!-- Offer date -->
+            <div class="product-color">
+                <span>Date of post:</span>
+
+                <div class="color-choose">
+                    <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">
+                        {{ chorespost.date_of_post }} </p>
                 </div>
+                <br>
+                <span>Start date:</span>
+
+                <div class="color-choose">
+                    <p class="mt-1 mb-0 font-semibold leading-tight text-xs text-slate-400">
+                        {{ chorespost.date }} </p>
+                </div>
+
             </div>
-             {% if user.user_type  == user.worker %}
-                    <div class="col-12 text-center but-back">
-                                <button type="button" class="btn btn-sm btn-outline-secondary sent-message" >
-                                    <a href="{% url 'messages_compose_to' chorespost.user_of_post.username %}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-                                        </svg> Posalju ponudu
-                                    </a>
-                                </button>
-                    </div>
-            {%endif%}
 
+            <!-- Offer owner -->
+            <div class="cable-config">
+                <span>Owner</span>
+
+                <div class="cable-choose">
+                    {{ chorespost.user_of_post.username }}
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span>{{ chorespost.budget }}rsd</span>
+            {% if user.user_type == user.worker %}
+            <a href="{% url 'messages_compose_to' chorespost.user_of_post.username %}" class="cart-btn">Send
+                message </a>
+            {% endif %}
         </div>
     </div>
-</div>
+</main>
 {% endif %}
 {% endblock %}
