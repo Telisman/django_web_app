@@ -2,10 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import SingUpForm, UserSettings
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from clients.models import ClientsUsers
-import urllib.request
-import json
+from django.views.generic import DetailView
+from clients.models import ClientsUsers, UserWorkExperience, UserEducation
 import requests
 import datetime
 from clients.filters import FilterUser
@@ -16,6 +14,8 @@ def UserDashbordPage(request):
     city = 'Belgrade'
     city_weather = requests.get(url.format(city)).json()  # request the API data and convert the JSON
     current_date_time = datetime.datetime.now()
+    experience = UserWorkExperience.objects.filter(user=request.user)
+    education = UserEducation.objects.filter(user=request.user)
     weather = {
         'city': city,
         'temperature': city_weather['main']['temp'],
@@ -24,6 +24,8 @@ def UserDashbordPage(request):
     }
     context = {'weather': weather,
                'current_date_time': current_date_time,
+               'experience': experience,
+               'education': education,
                }
 
     return render(request, 'dashboard.html', context)  # returns the index.html template
