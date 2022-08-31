@@ -13,7 +13,15 @@ class SingUpForm(UserCreationForm):
         model = ClientsUsers
         # widgets = {"date_of_birth":AdminDateWidget()}
         fields = (
-            'username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'user_type', 'date_of_birth')
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password1',
+            'password2',
+            'user_type',
+            'date_of_birth',
+            'gender')
 
     def __init__(self, *args, **kwargs):
         super(SingUpForm, self).__init__(*args, **kwargs)
