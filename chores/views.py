@@ -32,7 +32,6 @@ def OfferView(request):
     offers = ChoresPost.objects.all()
     listing_filter = ChoresPostFilters(request.GET, queryset=offers)
     context = {
-        # 'offers': offers,
         'listing_filter': listing_filter,
     }
 

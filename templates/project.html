@@ -2,8 +2,8 @@
 {% load static %}
 {% load tailwind_tags %}
 {% block content %}
-
 {% if user.is_authenticated %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/project.css' %}">
 <div class="container">
     <div class="relative flex flex-col min-w-0 mb-4 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border ">
@@ -72,9 +72,6 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
 
 {% endif %}
