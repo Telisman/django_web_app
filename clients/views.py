@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
-from .forms import SingUpForm, UserSettings
+from .forms import SingUpForm, UserSettings, AddWork, EducationForm
 from django.views.generic import DetailView
 from clients.models import ClientsUsers, UserWorkExperience, UserEducation
 import requests
@@ -64,3 +64,31 @@ class Settings(generic.UpdateView):
 
     def get_object(self):
         return self.request.user
+
+
+def AddUserWorkExperience(request):
+    submitted = False
+    if request.method == "POST":
+        form = AddWork(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'dashboard.html')
+    else:
+        pass
+
+    form = AddWork
+    return render(request, "work_experience.html", {'form': form})
+
+
+def AddEducation(request):
+    submitted = False
+    if request.method == "POST":
+        form = EducationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'dashboard.html')
+    else:
+        pass
+
+    form = EducationForm
+    return render(request, "add_education.html", {'form': form})

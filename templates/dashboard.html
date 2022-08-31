@@ -243,12 +243,6 @@
                       <span class="ml-1">Messages</span>
                     </a>
                   </li>
-                  <li class="z-30 flex-auto text-center" style="color:#ca2898;">
-                    <a class="z-30 block w-full px-0 py-1 mb-0 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit text-slate-700" nav-link href="{% url 'settings' %}" role="tab" aria-selected="false" style="color:#ca2898;">
-                      <i class="fa fa-cogs" aria-hidden="true"></i>
-                      <span class="ml-1">Settings</span>
-                    </a>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -341,6 +335,15 @@
                                 <div class="px-4 py-2 font-semibold">Birthday</div>
                                 <div class="px-4 py-2">{{user.date_of_birth}}</div>
                             </div>
+                            <div class="grid grid-cols-2">
+
+                            </div>
+                            <div class="px-4 py-2">
+                                    <a class="z-30 block w-full px-0 py-1 mb-0 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit text-slate-700" nav-link href="{% url 'settings' %}" role="tab" aria-selected="false" style="color:#ca2898;">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                        <span class="ml-1">Settings</span>
+                                    </a>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -361,9 +364,9 @@
                                               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
                                 </span>
-                                <span class="tracking-wide">Experience</span>
+                                <span class="tracking-wide">Experience</span><a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{% url 'addwork' %}">Add work</a>
                             </div>
-                            {% for experience in experience%}
+                            {% for experience in experience %}
                             <ul class="list-inside space-y-2" style="border-right: 1px solid black; margin-right:4%;">
                                 <li>
                                     <div class="text-teal-600">{{experience.experience1}}</div>
@@ -381,9 +384,7 @@
                                     <div class="text-teal-600">{{experience.experience4}}.</div>
                                     <div class="text-gray-500 text-xs">{{experience.start_date_experience4}} - {{experience.end_date_experience4}}</div>
                                 </li>
-                                <li>
 
-                                </li>
                             </ul>
                             {% endfor %}
                         </div>
@@ -399,7 +400,7 @@
                                               d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
                                     </svg>
                                 </span>
-                                <span class="tracking-wide">Education</span>
+                                <span class="tracking-wide">Education</span><a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="{% url 'addeducation' %}">Add education</a>
                             </div>
                             {% for education in education%}
                             <ul class="list-inside space-y-2">

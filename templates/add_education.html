@@ -1,0 +1,85 @@
+{% extends "dashboard.html" %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_offer.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/setting.css' %}">
+<div class="relative flex items-center p-0 overflow-hidden bg-center bg-cover min-h-75-screen">
+    <div class="container z-10">
+        <div class="flex flex-wrap mt-0 -mx-3">
+            <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
+                <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
+                    <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
+                        <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text">
+                            Add work experience </h3>
+                        <p class="mb-0">Form description:</p>
+                        <p>
+                            Through this form, we add are work experience starting from the last experience .
+                        </p>
+                    </div>
+                    <div class="flex-auto p-6">
+                        <form action="" method="POST" class="form-control">
+                            {% csrf_token %}
+                            <label for="id_education_high_school">Education high school:</label>
+                            <input type="text" name="education_high_school" class="form-control" maxlength="100"
+                                   required="" id="id_education_high_school">
+                            <label for="id_start_date_high_school">Start date high school:</label>
+                            <input type="date" name="start_date_high_school" class="form-control" required=""
+                                   id="id_start_date_high_school">
+                            <label for="id_end_date_high_school">End date high school:</label>
+                            <input type="date" name="end_date_high_school" class="form-control" required=""
+                                   id="id_end_date_high_school">
+                            <br>
+                            <br>
+                            <label for="id_education_university">Education university:</label>
+                            <input type="text" name="education_university" class="form-control" maxlength="100"
+                                   required="" id="id_education_university">
+                            <label for="id_start_date_university">Start date university:</label>
+                            <input type="date" name="start_date_university" class="form-control" required=""
+                                   id="id_start_date_university">
+                            <label for="id_end_date_university">End date university:</label>
+                            <input type="date" name="end_date_university" class="form-control" required=""
+                                   id="id_end_date_university">
+                            <br>
+                            <br>
+                            <br>
+                            <input type="hidden" name="user" class="form-control" value="28" id="user">
+                            <button type="submit">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full max-w-full px-3 lg:flex-0 shrink-0 md:w-6/12">
+                <div class="absolute top-0 hidden w-3/5 h-full -mr-32 overflow-hidden -skew-x-10 -right-40 rounded-bl-xl md:block">
+                    <div class="absolute inset-x-0 top-0 z-0 h-full -ml-16 bg-cover skew-x-10 image_form"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+                          function goBack() {
+                              window.history.back();
+                         }
+                        var name ="{{ user.id }}";
+                        document.getElementById("user").value = name;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+{% endif %}
+{% endblock %}
