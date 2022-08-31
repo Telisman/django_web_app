@@ -4,40 +4,7 @@
 {% block content %}
 {% if user.is_authenticated %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/user_detail_profile.css' %}">
-<!--<div class="container profile_user">-->
-<!--    <div class="grid-7 element-animation">-->
-<!--        &lt;!&ndash;card-1&ndash;&gt;-->
-<!--        <div class="card color-card">-->
-<!--            {% if workers.profile_image %}-->
-<!--            <img src="{{ workers.profile_image.url }}"-->
-<!--                 {% endif %}-->
-<!--                 alt="profile-pic" class="profile">-->
-<!--            <h1 class="title">{{workers.first_name}} {{workers.last_name}}</h1>-->
-<!--            <p class="job-title"> User Type:<br> Worker</p>-->
-<!--            <div class="desc top">-->
-<!--                <p><i class="fa fa-user" aria-hidden="true"></i>-->
-<!--                    Username:<br> {{workers.username}}</p>-->
 
-<!--                <p><i class="fa fa-calendar" aria-hidden="true"></i>-->
-<!--                    Date of birth:<br> {{workers.date_of_birth}}</p>-->
-
-<!--                <p><i class="fa fa-calendar-check-o" aria-hidden="true"></i>-->
-<!--                    Joined:<br> {{workers.date_joined}}</p>-->
-
-<!--                <p><i class="fa fa-info" aria-hidden="true"></i>-->
-<!--                    Bio:<br> {{workers.bio}}</p>-->
-
-<!--                <p><i class="fa fa-envelope-o" aria-hidden="true"></i>-->
-<!--                    Email address:<br>{{workers.email}}</p>-->
-
-<!--                <p><i class="fa fa-mobile" aria-hidden="true"></i>-->
-<!--                    Phone number:<br> {{workers.phone_number}}</p>-->
-
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,6 +26,7 @@
     .border-main-color {
         border-color: var(--main-color);
     }
+
 
 </style>
 <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
@@ -136,7 +104,7 @@
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Current Address</div>
-                                <div class="px-4 py-2"></div>
+                                <div class="px-4 py-2">{{workers.address}}</div>
                             </div>
 
                             <div class="grid grid-cols-2">
@@ -171,24 +139,34 @@
                                 </span>
                                 <span class="tracking-wide">Experience</span>
                             </div>
+                            {% for experience in UserWorkExperience %}
                             <ul class="list-inside space-y-2">
                                 <li>
-                                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{experience.experience1}}</div>
+                                    <div class="text-gray-500 text-xs">{{experience.start_date_experience1}} -
+                                        {{experience.end_date_experience1}}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{experience.experience2}}</div>
+                                    <div class="text-gray-500 text-xs">{{experience.start_date_experience2}} -
+                                        {{experience.end_date_experience2}}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{experience.experience3}}</div>
+                                    <div class="text-gray-500 text-xs">{{experience.start_date_experience3}} -
+                                        {{experience.end_date_experience3}}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{experience.experience4}}</div>
+                                    <div class="text-gray-500 text-xs">{{experience.start_date_experience4}} -
+                                        {{experience.end_date_experience4}}
+                                    </div>
                                 </li>
                             </ul>
+                            {% endfor %}
                         </div>
                         <div>
                             <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
@@ -204,16 +182,22 @@
                                 </span>
                                 <span class="tracking-wide">Education</span>
                             </div>
+                            {% for education in UserEducation%}
                             <ul class="list-inside space-y-2">
                                 <li>
-                                    <div class="text-teal-600">Masters Degree in Oxford</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{education.education_high_school}}</div>
+                                    <div class="text-gray-500 text-xs">
+                                        {{education.start_date_high_school}}-{{education.end_date_high_school}}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="text-teal-600">Bachelors Degreen in LPU</div>
-                                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                    <div class="text-teal-600">{{education.education_high_school}}</div>
+                                    <div class="text-gray-500 text-xs">
+                                        {{education.start_date_university}}-{{education.end_date_university}}
+                                    </div>
                                 </li>
                             </ul>
+                            {% endfor %}
                         </div>
                     </div>
                     <!-- End of Experience and education grid -->

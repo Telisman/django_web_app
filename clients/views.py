@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.urls import reverse_lazy
 from .forms import SingUpForm, UserSettings, AddWork, EducationForm
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from clients.models import ClientsUsers, UserWorkExperience, UserEducation
 import requests
 import datetime
@@ -53,6 +53,8 @@ class UserProfilePage(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(UserProfilePage, self).get_context_data(*args, **kwargs)
+        context['UserWorkExperience'] = UserWorkExperience.objects.filter(user=self.object)
+        context['UserEducation'] = UserEducation.objects.filter(user=self.object)
         stuff = get_object_or_404(ClientsUsers, pk=self.kwargs['pk'])
         return context
 
