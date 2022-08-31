@@ -98,9 +98,11 @@
                         var name ="{{ user.id }}";
                         document.getElementById("user").value = name;
 
+
     </script>
 </div>
-
+{%else%}
+<h1>You are not register as owner </h1>
 {% endif %}
 {% endif %}
 {% endblock %}

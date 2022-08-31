@@ -31,5 +31,5 @@ def LoginPage(request):
             return redirect('user-dashboard')
 
         else:
-            return redirect('login')
+            pass
     return render(request, "signin.html", {})

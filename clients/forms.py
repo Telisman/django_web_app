@@ -39,7 +39,7 @@ class UserSettings(UserChangeForm):
 
     class Meta:
         model = ClientsUsers
-        fields = ('username', 'first_name', 'last_name', 'email', 'bio', 'phone_number', 'profile_image')
+        fields = ('username', 'first_name', 'last_name', 'email', 'bio', 'phone_number', 'profile_image', 'address')
 
     def __init__(self, *args, **kwargs):
         super(UserSettings, self).__init__(*args, **kwargs)
