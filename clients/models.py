@@ -60,7 +60,7 @@ class UserWorkExperience(models.Model):
     end_date_experience1 = models.DateField(null=True)
 
     experience2 = models.CharField(max_length=100, null=True)
-    start_date_experience2 = models.DateField(null=True)
+    start_date_experience2 = models.DateField(null=True, default=None)
     end_date_experience2 = models.DateField(null=True)
 
     experience3 = models.CharField(max_length=100, null=True)
