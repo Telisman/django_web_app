@@ -13,6 +13,14 @@
 <script>
       new WOW().init();
 
+
+
+
+
+
+
+
+
 </script>
 
 
@@ -78,6 +86,13 @@
                                     required
                             />
                         </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="mb-6">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
                         <div class="mb-10">
                             <input
                                     type="submit"

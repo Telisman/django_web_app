@@ -31,5 +31,6 @@ def LoginPage(request):
             return redirect('user-dashboard')
 
         else:
-            pass
+            messages.error(request, "Login failed please try again. Password or username is incorrect.")
+            return render(request, "signin.html", {})
     return render(request, "signin.html", {})
