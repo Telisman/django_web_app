@@ -44,9 +44,9 @@ class UserSettings(UserChangeForm):
     def __init__(self, *args, **kwargs):
         super(UserSettings, self).__init__(*args, **kwargs)
         self.fields['username'].widget.attrs['class'] = 'form-control'
-        self.fields['phone_number'].required = False
-        self.fields['profile_image'].required = False
-        self.fields['bio'].required = False
+        self.fields['phone_number'].required = True
+        self.fields['profile_image'].required = True
+        self.fields['bio'].required = True
 
 
 class AddWork(ModelForm):
